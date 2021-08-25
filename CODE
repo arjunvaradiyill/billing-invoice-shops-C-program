@@ -1,0 +1,47 @@
+#include <stdio.h>
+#include <string.h>
+
+int main()
+{
+   struct purchase
+    {
+        int code;
+        char name[20];
+        int qty;
+        int price;
+    };
+    struct purchase item[50];
+    int n, i;
+    int discount=0,total=0,grant;
+    printf("Enter number of items:");
+    scanf("%d",&n);
+    for (i=1;i<=n;i++)
+    {
+        printf("Item code: ");
+        scanf("%d", &item[i].code);
+        printf("\nItem name: ");
+        scanf("%s", item[i].name);
+        printf("\nQuantity: ");
+        scanf("%d", &item[i].qty);
+        printf("\nprice: ");
+        scanf("%d",  &item[i].price);
+        total=total+(item[i].price*item[i].qty);
+    }
+    if(n>=3)
+    {
+      discount=0.1*total;
+    }
+    grant=total-discount;
+    printf("\nCode:\t|NAME:\t  |QUANTITY:\t| PRICE:\n");
+    printf("-----------------------------------------------\n");
+   
+    for (i=1;i<=n;i++)
+    {
+      printf("%d\t%s\t\t%d\t\t%d\n", item[i].code,item[i].name,item[i].qty,item[i].price*item[i].qty);
+    }
+    printf("Total=%d\n",total);
+    printf("Discount=%d\n",discount);
+    printf("Grant Total=%d",grant);
+ 
+    return 0;
+}
